@@ -10,4 +10,5 @@ window.addEventListener("DOMContentLoaded", async function() {
     console.log("Jesus is Lord!")
 
     loadData()
+    app.router.init()
 })
