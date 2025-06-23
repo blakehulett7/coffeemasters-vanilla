@@ -3,7 +3,7 @@ const Router = {
         document.querySelectorAll("a.navlink").forEach(function(link) {
             link.addEventListener("click", function(e) {
                 e.preventDefault()
-                const url = link.href
+                const url = link.getAttribute("href")
                 Router.go(url)
             })
         })
@@ -14,6 +14,21 @@ const Router = {
         if (addToHistory) {
             history.pushState({ route }, "", route)
         }
+
+        var pageElement = null
+        switch (route) {
+            case "/":
+                pageElement = document.createElement("h1")
+                pageElement.textContent = "Menu"
+                // I can also use the hidden attribute to change page visibility - useful for small apps
+                break;
+            case "/order":
+                pageElement = document.createElement("h1")
+                pageElement.textContent = "Your Order"
+                break;
+        }
+
+        document.querySelector("main").appendChild(pageElement)
     }
 }
 
