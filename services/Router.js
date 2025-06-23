@@ -28,6 +28,10 @@ const Router = {
                 break;
         }
 
+        if (!pageElement) {
+            return
+        }
+
         document.querySelector("main").innerHTML = ""
         document.querySelector("main").appendChild(pageElement)
     }
