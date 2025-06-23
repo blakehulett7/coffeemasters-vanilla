@@ -8,6 +8,10 @@ const Router = {
             })
         })
 
+        window.addEventListener("popstate", function(e) {
+            Router.go(e.state.route, false)
+        })
+
         Router.go(location.pathname)
     },
     go: function(route, addToHistory = true) {
@@ -26,6 +30,13 @@ const Router = {
                 pageElement = document.createElement("h1")
                 pageElement.textContent = "Your Order"
                 break;
+            default:
+                if (route.startsWith("/product/")) {
+                    pageElement = document.createElement("h1")
+                    pageElement.textContent = "Details"
+                    const productId = route.substring(route.lastIndexOf("-") + 1)
+                    pageElement.dataset.id = productId
+                }
         }
 
         if (!pageElement) {
