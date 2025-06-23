@@ -34,6 +34,8 @@ const Router = {
 
         document.querySelector("main").innerHTML = ""
         document.querySelector("main").appendChild(pageElement)
+        window.scrollX = 0
+        window.scrollY = 0
     }
 }
 
