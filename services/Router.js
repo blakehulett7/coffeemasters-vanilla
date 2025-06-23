@@ -28,6 +28,7 @@ const Router = {
                 break;
         }
 
+        document.querySelector("main").innerHTML = ""
         document.querySelector("main").appendChild(pageElement)
     }
 }
