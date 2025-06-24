@@ -18,6 +18,27 @@ class MenuPage extends HTMLElement {
         const template = document.getElementById("menu-page-template")
         const content = template.content.cloneNode(true)
         this.root.appendChild(content) // If I was not using a shadow DOM, this would be this.appendChild(content)
+
+        window.addEventListener("appmenuchange", function() {
+            this.render()
+        })
+    }
+
+    render() {
+        if (!app.store.menu) {
+            this.root.querySelector("#menu").innerHTML = "Loading..."
+            return
+        }
+
+        for (let category of app.store.menu) {
+            const liCategory = document.createElement("li")
+            liCategory.innerHTML = `
+                <h3>${category.name}</h3>
+                <ul class="category">
+                </ul>
+            `
+            this.root.querySelector("#menu").appendChild(liCategory)
+        }
     }
 }
 
