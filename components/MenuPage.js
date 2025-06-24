@@ -1,14 +1,23 @@
 class MenuPage extends HTMLElement {
     constructor() {
         super()
+        this.root = this.attachShadow({ mode: "open" }) // Shadow DOM -- optional way to contain custom css within a web component
 
-        this.root = this.attachShadow({ mode: "open" }) // Shadow DOM
+        const styles = document.createElement("style")
+        this.root.appendChild(styles)
+
+        async function loadCSS() {
+            const request = await fetch("/components/MenuPage.css")
+            const css = await request.text()
+            styles.textContent = css
+        }
+        loadCSS()
     }
 
     connectedCallback() {
         const template = document.getElementbyId("menu-page-template")
         const content = template.content.cloneNode(true)
-        this.appendChild(content) // If I was using a shadow DOM, this would be this.root.appendChild(content)
+        this.root.appendChild(content) // If I was not using a shadow DOM, this would be this.appendChild(content)
     }
 }
 
