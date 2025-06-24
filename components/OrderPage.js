@@ -1,9 +1,9 @@
-class MenuPage extends HTMLElement {
+class OrderPage extends HTMLElement {
     constructor() {
         super()
     }
 }
 
-customElements.define("menu-page", MenuPage)
+customElements.define("order-page", OrderPage)
 
-export default MenuPage
+export default OrderPage
