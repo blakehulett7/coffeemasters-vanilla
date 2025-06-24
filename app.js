@@ -1,4 +1,4 @@
-import Store from "./services/Store.js"
+import proxiedStore from "./services/Store.js"
 import loadData from "./services/Menu.js"
 import Router from "./services/Router.js"
 
@@ -7,7 +7,7 @@ import DetailsPage from "./components/DetailsPage.js"
 import OrderPage from "./components/OrderPage.js"
 
 window.app = {}
-app.store = Store
+app.store = proxiedStore
 app.router = Router
 
 window.addEventListener("DOMContentLoaded", async function() {

@@ -19,7 +19,7 @@ class MenuPage extends HTMLElement {
         const content = template.content.cloneNode(true)
         this.root.appendChild(content) // If I was not using a shadow DOM, this would be this.appendChild(content)
 
-        window.addEventListener("appmenuchange", function() {
+        window.addEventListener("appmenuchanged", () => {
             this.render()
         })
     }
