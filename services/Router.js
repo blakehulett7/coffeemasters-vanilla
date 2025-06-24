@@ -19,21 +19,18 @@ const Router = {
             history.pushState({ route }, "", route)
         }
 
+        // I can also use the hidden attribute to change page visibility - useful for small apps
         var pageElement = null
         switch (route) {
             case "/":
-                pageElement = document.createElement("h1")
-                pageElement.textContent = "Menu"
-                // I can also use the hidden attribute to change page visibility - useful for small apps
+                pageElement = document.createElement("menu-page")
                 break;
             case "/order":
-                pageElement = document.createElement("h1")
-                pageElement.textContent = "Your Order"
+                pageElement = document.createElement("order-page")
                 break;
             default:
                 if (route.startsWith("/product/")) {
-                    pageElement = document.createElement("h1")
-                    pageElement.textContent = "Details"
+                    pageElement = document.createElement("details-page")
                     const productId = route.substring(route.lastIndexOf("-") + 1)
                     pageElement.dataset.id = productId
                 }
