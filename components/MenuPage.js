@@ -21,7 +21,7 @@ class MenuPage extends HTMLElement {
 
         window.addEventListener("appmenuchanged", () => {
             this.render()
-        })
+        }) // important that this is an arrow function!!
     }
 
     render() {
