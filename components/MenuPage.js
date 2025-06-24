@@ -15,7 +15,7 @@ class MenuPage extends HTMLElement {
     }
 
     connectedCallback() {
-        const template = document.getElementbyId("menu-page-template")
+        const template = document.getElementById("menu-page-template")
         const content = template.content.cloneNode(true)
         this.root.appendChild(content) // If I was not using a shadow DOM, this would be this.appendChild(content)
     }
